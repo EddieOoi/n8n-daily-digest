@@ -128,3 +128,6 @@ interface DeveloperLearnings {
   
   markdownParsing: "Built custom JS formatting scripts tailored specifically to Slack's block and Markdown rendering engine.";
 }
+
+```
+Developed by 🙋‍♂️ [Eddie Ooi](https://github.com/EddieOoi)
