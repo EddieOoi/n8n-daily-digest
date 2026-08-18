@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%" style="background: #0f111a; border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Background Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e2235" stroke-width="1" />
+    </pattern>
+
+    <!-- Node Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Accent Brand Glow -->
+    <filter id="brand-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Gradient Connections -->
+    <linearGradient id="line-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6d5a" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#8e75b2" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="line-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8e75b2" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#4a154b" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- n8n Node Gradient -->
+    <linearGradient id="n8n-node-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7e6b" />
+      <stop offset="100%" stop-color="#ea5440" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* Animated Data Flow Lines */
+    .flow-line {
+      stroke-dasharray: 8, 8;
+      animation: dash 1.5s linear infinite;
+    }
+    
+    .float-node {
+      animation: float 4s ease-in-out infinite alternate;
+    }
+
+    .float-node-delayed {
+      animation: float 5s ease-in-out -2s infinite alternate;
+    }
+
+    .success-pulse {
+      animation: success 1.5s ease-in-out infinite;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -32;
+      }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    @keyframes success {
+      0% { r: 4px; opacity: 1; }
+      100% { r: 12px; opacity: 0; }
+    }
+  </style>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="400" fill="#0f111a" rx="12" />
+  <rect width="1200" height="400" fill="url(#grid)" rx="12" />
+
+  <!-- Ambient Background Glows -->
+  <circle cx="1020" cy="200" r="160" fill="#ff6d5a" opacity="0.08" filter="url(#brand-glow)" />
+  <circle cx="780" cy="140" r="140" fill="#8e75b2" opacity="0.06" filter="url(#brand-glow)" />
+
+  <!-- LEFT SECTION: HERO TEXT & BADGES -->
+  <g transform="translate(60, 130)">
+    <!-- Main Title -->
+    <text x="0" y="0" fill="#ffffff" font-size="38" font-weight="800" letter-spacing="-0.5">Automated Workflow</text>
+    <text x="0" y="46" fill="#ff6d5a" font-size="38" font-weight="800" letter-spacing="-0.5">Engineered with n8n</text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="88" fill="#8088a6" font-size="15" font-weight="400">
+      Multi-source API Orchestration &amp; Gemini AI Digest Synthesis
+    </text>
+
+    <!-- Tag Badges -->
+    <g transform="translate(0, 115)">
+      <!-- Badge 1 -->
+      <rect x="0" y="0" width="85" height="26" rx="13" fill="#ff6d5a" fill-opacity="0.15" stroke="#ff6d5a" stroke-width="1" />
+      <text x="42.5" y="17" fill="#ff6d5a" font-size="11" font-weight="700" text-anchor="middle">n8n core</text>
+      
+      <!-- Badge 2 (Updated to Gemini 2.5) -->
+      <rect x="95" y="0" width="100" height="26" rx="13" fill="#8e75b2" fill-opacity="0.15" stroke="#8e75b2" stroke-width="1" />
+      <text x="145" y="17" fill="#8e75b2" font-size="11" font-weight="700" text-anchor="middle">Gemini 2.5</text>
+
+      <!-- Badge 3 -->
+      <rect x="205" y="0" width="85" height="26" rx="13" fill="#4a154b" fill-opacity="0.4" stroke="#e01e5a" stroke-width="1" />
+      <text x="247.5" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">Slack DM</text>
+    </g>
+  </g>
+
+  <!-- RIGHT SECTION: WORKFLOW PIPELINE -->
+
+  <!-- WORKFLOW CONNECTIONS (PIPES) -->
+  <!-- Line 1: Trigger to AI Node -->
+  <path d="M 640 200 C 700 200, 700 130, 760 130" fill="none" stroke="#2a2e45" stroke-width="4" />
+  <path d="M 640 200 C 700 200, 700 130, 760 130" fill="none" stroke="url(#line-grad-1)" stroke-width="3" class="flow-line" />
+
+  <!-- Line 2: Trigger to JS Node -->
+  <path d="M 640 200 C 700 200, 700 270, 760 270" fill="none" stroke="#2a2e45" stroke-width="4" />
+  <path d="M 640 200 C 700 200, 700 270, 760 270" fill="none" stroke="url(#line-grad-1)" stroke-width="3" class="flow-line" />
+
+  <!-- Line 3: AI Node to Slack Output -->
+  <path d="M 850 130 C 910 130, 910 200, 970 200" fill="none" stroke="#2a2e45" stroke-width="4" />
+  <path d="M 850 130 C 910 130, 910 200, 970 200" fill="none" stroke="url(#line-grad-2)" stroke-width="3" class="flow-line" />
+
+  <!-- Line 4: JS Node to Slack Output -->
+  <path d="M 850 270 C 910 270, 910 200, 970 200" fill="none" stroke="#2a2e45" stroke-width="4" />
+  <path d="M 850 270 C 910 270, 910 200, 970 200" fill="none" stroke="url(#line-grad-2)" stroke-width="3" class="flow-line" />
+
+  <!-- WORKFLOW NODES -->
+
+  <!-- Node 1: Trigger Node -->
+  <g class="float-node">
+    <g transform="translate(550, 160)">
+      <rect x="0" y="0" width="90" height="76" rx="14" fill="#181b28" stroke="#ff6d5a" stroke-width="2" filter="url(#glow)" />
+      <circle cx="45" cy="33" r="13" fill="url(#n8n-node-grad)" />
+      <path d="M 40 33 L 50 33 M 45 28 L 45 38" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
+      <text x="45" y="61" fill="#a0a5c0" font-size="10" font-weight="600" text-anchor="middle">Schedule</text>
+      <circle cx="90" cy="38" r="4.5" fill="#ff6d5a" />
+    </g>
+  </g>
+
+  <!-- Node 2: AI Processor Node (Gemini AI) -->
+  <g class="float-node-delayed">
+    <g transform="translate(760, 90)">
+      <rect x="0" y="0" width="90" height="76" rx="14" fill="#181b28" stroke="#8e75b2" stroke-width="2" filter="url(#glow)" />
+      <circle cx="45" cy="33" r="13" fill="#8e75b2" />
+      <path d="M 45 25 L 47 31 L 53 33 L 47 35 L 45 41 L 43 35 L 37 33 L 43 31 Z" fill="#ffffff" />
+      <text x="45" y="61" fill="#a0a5c0" font-size="10" font-weight="600" text-anchor="middle">Gemini AI</text>
+      <circle cx="0" cy="38" r="4.5" fill="#8e75b2" />
+      <circle cx="90" cy="38" r="4.5" fill="#8e75b2" />
+    </g>
+  </g>
+
+  <!-- Node 3: Code/Format Node -->
+  <g class="float-node">
+    <g transform="translate(760, 230)">
+      <rect x="0" y="0" width="90" height="76" rx="14" fill="#181b28" stroke="#3b82f6" stroke-width="2" />
+      <circle cx="45" cy="33" r="13" fill="#3b82f6" />
+      <path d="M 40 30 L 35 33 L 40 36 M 50 30 L 55 33 L 50 36" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="45" y="61" fill="#a0a5c0" font-size="10" font-weight="600" text-anchor="middle">Format JS</text>
+      <circle cx="0" cy="38" r="4.5" fill="#3b82f6" />
+      <circle cx="90" cy="38" r="4.5" fill="#3b82f6" />
+    </g>
+  </g>
+
+  <!-- Node 4: Slack Output Node -->
+  <g class="float-node-delayed">
+    <g transform="translate(970, 160)">
+      <rect x="0" y="0" width="90" height="76" rx="14" fill="#181b28" stroke="#4a154b" stroke-width="2" filter="url(#glow)" />
+      <circle cx="45" cy="33" r="13" fill="#4a154b" />
+      <text x="45" y="38" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">#</text>
+      <text x="45" y="61" fill="#a0a5c0" font-size="10" font-weight="600" text-anchor="middle">Slack Digest</text>
+      <circle cx="0" cy="38" r="4.5" fill="#4a154b" />
+      
+      <!-- Execution Success Indicator -->
+      <circle cx="78" cy="12" r="7" fill="#10b981" />
+      <circle cx="78" cy="12" r="3" fill="none" stroke="#10b981" class="success-pulse" />
+      <path d="M 74 12 L 77 15 L 82 9" stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round" />
+    </g>
+  </g>
+
+</svg>
