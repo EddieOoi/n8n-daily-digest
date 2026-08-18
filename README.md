@@ -41,7 +41,7 @@
   <li>
     <strong>Local Environment Setup (n8n on Localhost):</strong>
     <ul>
-      <li>Installed and configured <code>n8n</code> locally using Docker for an isolated and reproducible development environment.</li>
+      <li>Initialized and launched <code>n8n</code> locally using Node.js via <code>npx n8n</code> for rapid local development.</li>
     </ul>
   </li>
   <li>
