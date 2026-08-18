@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+  <defs>
+    <!-- Dark Mode Canvas Style -->
+    <style>
+      .bg { fill: #18181b; }
+      .grid { stroke: #27272a; stroke-width: 1; stroke-dasharray: 4 4; }
+      .connection { fill: none; stroke: #3f3f46; stroke-width: 2; stroke-linecap: round; }
+      
+      /* Animated Data Pulses */
+      .pulse {
+        fill: none;
+        stroke: #ff6d5a;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-dasharray: 8 120;
+        animation: flow 3s linear infinite;
+      }
+      .pulse-fast {
+        fill: none;
+        stroke: #8e75b2;
+        stroke-width: 3;
+        stroke-dasharray: 8 80;
+        animation: flow 2s linear infinite;
+      }
+      @keyframes flow {
+        from { stroke-dashoffset: 128; }
+        to { stroke-dashoffset: 0; }
+      }
+
+      /* Node Styles */
+      .node-card { fill: #27272a; stroke: #3f3f46; stroke-width: 1.5; rx: 8px; ry: 8px; }
+      .node-title { fill: #f4f4f5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; font-weight: 600; }
+      .node-sub { fill: #a1a1aa; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 8px; }
+      .sticky-box { fill: #14532d; stroke: #16a34a; stroke-width: 1; rx: 6px; }
+      .sticky-text { fill: #86efac; font-family: sans-serif; font-size: 8px; }
+      .note-blue { fill: #1e3a8a; stroke: #2563eb; stroke-width: 1; rx: 6px; }
+      .note-blue-text { fill: #93c5fd; font-family: sans-serif; font-size: 8px; }
+    </style>
+
+    <!-- Node Icons -->
+    <g id="icon-clock">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="#ff6d5a" stroke-width="2"/>
+      <path d="M12 7v5l3 3" fill="none" stroke="#ff6d5a" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="icon-globe">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="#60a5fa" stroke-width="2"/>
+      <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+    </g>
+    <g id="icon-cal">
+      <rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="#4285f4" stroke-width="2"/>
+      <path d="M4 9h16M8 3v4M16 3v4" stroke="#4285f4" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="icon-rss">
+      <circle cx="5" cy="19" r="1.5" fill="#f97316"/>
+      <path d="M4 11a8 8 0 0 1 8 8M4 5a14 14 0 0 1 14 14" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="icon-notion">
+      <rect x="5" y="4" width="14" height="16" rx="2" fill="#ffffff"/>
+      <path d="M7 6h10M7 10h10M7 14h6" stroke="#000000" stroke-width="2"/>
+    </g>
+    <g id="icon-code">
+      <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="#a855f7" stroke-width="2"/>
+      <path d="M8 10l-2 2 2 2M16 10l2 2-2 2M13 9l-2 6" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <g id="icon-merge">
+      <path d="M4 6h4l6 6h6M4 18h4l6-6" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Authentic Modern Slack Logo -->
+    <g id="icon-slack">
+      <path d="M6 14.5a2.5 2.5 0 1 0 2.5 2.5v-2.5H6zm0-8A2.5 2.5 0 0 0 3.5 9 2.5 2.5 0 0 0 6 11.5h2.5V9A2.5 2.5 0 0 0 6 6.5z" fill="#E01E5A"/>
+      <path d="M9.5 6a2.5 2.5 0 1 0-2.5-2.5V6h2.5zm8 0A2.5 2.5 0 0 0 15 3.5 2.5 2.5 0 0 0 12.5 6v2.5H15A2.5 2.5 0 0 0 17.5 6z" fill="#36C5F0"/>
+      <path d="M18 9.5a2.5 2.5 0 1 0-2.5-2.5v2.5H18zm0 8a2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5h-2.5v2.5a2.5 2.5 0 0 0 2.5 2.5z" fill="#2EB67D"/>
+      <path d="M14.5 18a2.5 2.5 0 1 0 2.5 2.5V18h-2.5zm-8 0a2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5v-2.5H9A2.5 2.5 0 0 0 6.5 18z" fill="#ECB22E"/>
+    </g>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1000" height="500" class="bg" />
+  
+  <!-- Canvas Grid -->
+  <path d="M0 50h1000M0 100h1000M0 150h1000M0 200h1000M0 250h1000M0 300h1000M0 350h1000M0 400h1000M0 450h1000" class="grid" />
+  <path d="M100 0v500M200 0v500M300 0v500M400 0v500M500 0v500M600 0v500M700 0v500M800 0v500M900 0v500" class="grid" />
+
+  <!-- Green Workflow Annotation Sticky Box -->
+  <g transform="translate(40, 20)">
+    <rect width="210" height="80" class="sticky-box" />
+    <text x="10" y="20" class="sticky-text" font-weight="bold">Personalized Daily Digest</text>
+    <text x="10" y="35" class="sticky-text">Runs every morning, pulls weather / calendar /</text>
+    <text x="10" y="48" class="sticky-text">news / tasks in parallel, merges them, asks</text>
+    <text x="10" y="61" class="sticky-text">Gemini AI to write briefing &amp; DMs Slack.</text>
+  </g>
+
+  <!-- Static Workflow Connections (Curved Paths) -->
+  <g class="connection">
+    <!-- Trigger to Parallel Data Sources -->
+    <path d="M150 250 C180 250, 180 130, 210 130" id="path1"/>
+    <path d="M150 250 C180 250, 180 190, 210 190" id="path2"/>
+    <path d="M150 250 C180 250, 180 250, 210 250" id="path3"/>
+    <path d="M150 250 C180 250, 180 310, 210 310" id="path4"/>
+    <path d="M150 250 C180 250, 180 370, 210 370" id="path5"/>
+    <path d="M150 250 C180 250, 180 430, 210 430" id="path6"/>
+
+    <!-- Data Sources to Intermediate / Merge -->
+    <path d="M310 130 C400 130, 420 220, 450 220" id="path7"/>
+    <path d="M310 190 C400 190, 420 230, 450 230" id="path8"/>
+    <path d="M310 250 C330 250, 330 270, 350 270" id="path9"/>
+    <path d="M310 370 C330 370, 330 350, 350 350" id="path10"/>
+    <path d="M310 430 C330 430, 330 410, 350 410" id="path11"/>
+
+    <path d="M410 270 C430 270, 430 240, 450 240" id="path12"/>
+    <path d="M410 350 C430 350, 430 250, 450 250" id="path13"/>
+    <path d="M410 410 C430 410, 430 260, 450 260" id="path14"/>
+
+    <!-- Processing Pipeline to AI & Output -->
+    <path d="M500 240 L540 240" id="path15"/>
+    <path d="M600 240 L640 240" id="path16"/>
+    <path d="M700 240 L740 240" id="path17"/>
+    <path d="M800 240 L840 240" id="path18"/>
+    <path d="M900 240 L930 240" id="path19"/>
+  </g>
+
+  <!-- Animated Glowing Pulses Overlay -->
+  <use href="#path1" class="pulse" />
+  <use href="#path2" class="pulse" />
+  <use href="#path3" class="pulse" />
+  <use href="#path4" class="pulse" />
+  <use href="#path5" class="pulse" />
+  <use href="#path6" class="pulse" />
+  <use href="#path7" class="pulse" />
+  <use href="#path8" class="pulse" />
+  <use href="#path12" class="pulse" />
+  <use href="#path13" class="pulse" />
+  <use href="#path14" class="pulse" />
+  <use href="#path15" class="pulse-fast" />
+  <use href="#path16" class="pulse-fast" />
+  <use href="#path17" class="pulse-fast" />
+  <use href="#path18" class="pulse-fast" />
+  <use href="#path19" class="pulse-fast" />
+
+  <!-- NODES -->
+
+  <!-- 1. Trigger Node -->
+  <g transform="translate(100, 225)">
+    <rect width="50" height="50" class="node-card" />
+    <use href="#icon-clock" x="13" y="13" />
+    <text x="25" y="65" class="node-title" text-anchor="middle">Every 7 AM</text>
+  </g>
+
+  <!-- 2. Fetch Nodes (Parallel Branch) -->
+  <g transform="translate(210, 110)">
+    <rect width="100" height="40" class="node-card" />
+    <use href="#icon-globe" x="8" y="10" />
+    <text x="36" y="20" class="node-title">OpenWeather</text>
+    <text x="36" y="30" class="node-sub">GET: Forecast</text>
+  </g>
+
+  <g transform="translate(210, 170)">
+    <rect width="100" height="40" class="node-card" />
+    <use href="#icon-cal" x="8" y="10" />
+    <text x="36" y="20" class="node-title">Google Cal</text>
+    <text x="36" y="30" class="node-sub">getAll: Events</text>
+  </g>
+
+  <g transform="translate(210, 230)">
+    <rect width="100" height="40" class="node-card" />
+    <use href="#icon-rss" x="8" y="10" />
+    <text x="36" y="20" class="node-title">News RSS</text>
+    <text x="36" y="30" class="node-sub">Global Updates</text>
+  </g>
+
+  <g transform="translate(210, 290)">
+    <rect width="100" height="40" class="node-card" />
+    <use href="#icon-rss" x="8" y="10" />
+    <text x="36" y="20" class="node-title">TechCrunch</text>
+    <text x="36" y="30" class="node-sub">AI Feed</text>
+  </g>
+
+  <g transform="translate(210, 350)">
+    <rect width="100" height="40" class="node-card" />
+    <use href="#icon-notion" x="8" y="10" />
+    <text x="36" y="20" class="node-title">Notion Tasks</text>
+    <text x="36" y="30" class="node-sub">Due Today</text>
+  </g>
+
+  <g transform="translate(210, 410)">
+    <rect width="100" height="40" class="node-card" />
+    <use href="#icon-globe" x="8" y="10" />
+    <text x="36" y="20" class="node-title">Trello API</text>
+    <text x="36" y="30" class="node-sub">To-Do Cards</text>
+  </g>
+
+  <!-- 3. Transformation / Aggregation Nodes -->
+  <g transform="translate(350, 250)">
+    <rect width="60" height="40" class="node-card" />
+    <use href="#icon-code" x="6" y="10" />
+    <text x="30" y="35" class="node-sub" text-anchor="middle" fill="#a855f7">Top News</text>
+  </g>
+
+  <g transform="translate(350, 330)">
+    <rect width="60" height="40" class="node-card" />
+    <use href="#icon-code" x="6" y="10" />
+    <text x="30" y="35" class="node-sub" text-anchor="middle" fill="#a855f7">Notion JS</text>
+  </g>
+
+  <g transform="translate(350, 390)">
+    <rect width="60" height="40" class="node-card" />
+    <use href="#icon-code" x="6" y="10" />
+    <text x="30" y="35" class="node-sub" text-anchor="middle" fill="#a855f7">Trello JS</text>
+  </g>
+
+  <!-- 4. Merge Node -->
+  <g transform="translate(450, 220)">
+    <rect width="50" height="40" class="node-card" />
+    <use href="#icon-merge" x="13" y="10" />
+    <text x="25" y="55" class="node-title" text-anchor="middle">Merge All</text>
+  </g>
+
+  <!-- 5. Processing / Gemini AI Nodes -->
+  <g transform="translate(540, 220)">
+    <rect width="60" height="40" class="node-card" />
+    <use href="#icon-code" x="6" y="10" />
+    <text x="30" y="55" class="node-title" text-anchor="middle">Format Input</text>
+  </g>
+
+  <g transform="translate(640, 220)">
+    <rect width="60" height="40" class="node-card" stroke="#8e75b2" stroke-width="2" />
+    <use href="#icon-globe" x="6" y="10" />
+    <text x="30" y="55" class="node-title" text-anchor="middle" fill="#8e75b2">Gemini AI</text>
+  </g>
+
+  <g transform="translate(740, 220)">
+    <rect width="60" height="40" class="node-card" />
+    <use href="#icon-code" x="6" y="10" />
+    <text x="30" y="55" class="node-title" text-anchor="middle">Parse AI</text>
+  </g>
+
+  <!-- Blue Instruction Box -->
+  <g transform="translate(640, 290)">
+    <rect width="160" height="65" class="note-blue" />
+    <text x="10" y="18" class="note-blue-text" font-weight="bold">Setup Required:</text>
+    <text x="10" y="32" class="note-blue-text">Connect API credentials for</text>
+    <text x="10" y="44" class="note-blue-text">Weather, Calendar, Notion, Trello,</text>
+    <text x="10" y="56" class="note-blue-text">and Gemini before activating.</text>
+  </g>
+
+  <!-- 6. Output Node (Slack) -->
+  <g transform="translate(840, 220)">
+    <rect width="60" height="40" class="node-card" stroke="#4A154B" stroke-width="2" />
+    <use href="#icon-slack" x="18" y="8" />
+    <text x="30" y="55" class="node-title" text-anchor="middle" fill="#E01E5A">Slack DM</text>
+  </g>
+</svg>
