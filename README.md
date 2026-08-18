@@ -100,6 +100,9 @@
 
 <p>Below is a breakdown of the key architecture milestones and technical insights gained while building this workflow:</p>
 
+  <img src="assets/n8n-project-highlight.gif" alt="n8n Automated Workflow Hero Banner" width="100%" />
+  <img src="assets/n8n-project-highlight2.gif" alt="n8n Automated Workflow Hero Banner" width="100%" />
+
 <!-- Key Achievements Callout Section -->
 > [!NOTE]
 > ### 🚀 Key Achievements
