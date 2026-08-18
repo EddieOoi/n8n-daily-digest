@@ -17,6 +17,7 @@
 ---
 
 ### ⚡ System Architecture
+  <img src="assets/n8n-workflow-animation.svg" alt="n8n Automated Workflow Hero Banner" width="100%" />
 
 ```text
                ┌────────────────────────┐
