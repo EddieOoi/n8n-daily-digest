@@ -7,6 +7,7 @@
   [![n8n Workflow](https://img.shields.io/badge/n8n-Workflow-FF6D5A?style=for-the-badge&logo=n8n&logoColor=white)](https://n8n.io/)
   [![Google Gemini](https://img.shields.io/badge/Google_Gemini-AI_Synthesizer-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)](https://gemini.google.com/)
   [![Slack Integration](https://img.shields.io/badge/Slack-Daily_Digest-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://slack.com/)
+  [![Portfolio Details](https://img.shields.io/badge/Portfolio_Details-9D4EDD?style=for-the-badge&logo=files&logoColor=white)](https://eddieooi.github.io/3ddGemu-Portfolio/portfolio-n8n.html)
 
   <p align="center">
     <b>An automated backend workflow engineered to synthesize multi-source daily intelligence into actionable Slack briefs.</b>
